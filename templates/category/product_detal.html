@@ -1,0 +1,24 @@
+{% extends 'category/base_category.html %}
+
+{% block data %}
+    {% for pi in product.images.all %}
+        <img src="{{pi.0.image.url }}">
+    {% endfor %}
+    <h3> {{ product.title }} </h3>
+    <p> {{ product.description }} </p>
+    <p> {{ product.stock.price }}</p>
+
+    <form method="post" action="{% url add-to-basket %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+<!--        <input type="hidden" name="product_id" value="{{product.id}}">  -->
+        <input type="hidden" name="next" value="{{request.build_absolute_uri}}">
+<!--        <input type="text" name="quantity">    -->
+        <button type="submit"> Add to Basket </button>>
+    </form>
+{% endblock %}
+
+{% block title %}
+{{product.title}}
+{% endblock %}

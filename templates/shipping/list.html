@@ -1,0 +1,13 @@
+{% extend 'base.html %}
+
+{% block title %}User addresses {% endblock %}
+
+{% block content %}
+
+<ul>
+  {% for addr in querset %}
+  <li> {{addr.zipcode}} - {{addr.number}} </li>
+
+</ul>
+<a href="{% url 'address-create' %}">Add new address</a>
+{% endblock %}

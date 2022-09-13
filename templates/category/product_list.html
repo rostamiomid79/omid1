@@ -1,0 +1,20 @@
+{% extends 'category/base_category.html' %}
+
+{% block title %}
+Product list page
+{% endblock %}
+
+{% block data %}
+
+
+    {% for product in products %}
+        <a href= "url 'product_detail' product.pk" {{ product.title }}</a>
+        <h3>({% if product.is_active %} Available {% else %} Not Available {% endif %}) </h4>
+         {% if product.stock %}
+             <h3> $ {{product.stock.price}} </h4>
+         {% endif %}
+    <br>
+    {% endfor %}
+{% endblock %}
+
+
